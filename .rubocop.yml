@@ -1,0 +1,7 @@
+
+# Disable Style/FrozenStringLiteralComment rule
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/EndOfLine:
+  Enabled: false
