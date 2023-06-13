@@ -5,7 +5,7 @@ class Post < ApplicationRecord
 
   after_create :increment_user_Postscounter
 
-  def increment_user_Postscounter
+  def increment_user_posts_counter
     user.increment!(:PostsCounter)
   end
 
