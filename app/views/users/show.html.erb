@@ -1,1 +1,26 @@
 <h1>User Details</h1>
+
+<div class='details-user-box'>
+  <div class='details-user-header'>
+    <img id='details-user-image' src="<%= @user.photo %>" alt="User Photo">
+    <span class='details-user-name'><%= @user.name %></span>
+    <span class='details-user-posts'>Number of Posts: <%= @user.posts_counter %></span>
+  </div>
+  <div class='details-user-interactions-bio'>
+    <p>Bio</p>
+    <p><%= @user.bio %></p>
+  </div>
+  <div class='details-user-posts'>
+  <% @user.recent_posts.each_with_index do |post, index|%>
+    <div class='details-user-bio'>
+    <p>Post #<%= index+1 %></p>
+    <p><%= post.text%></p>
+    <div class='details-post-interactions'>
+      <span class='details-post-likes'>Likes : <%= post.likes_counter %></span>
+      <span class='details-post-comments'>Comments : <%= post.comments_counter %></span>
+    </div>
+    </div>
+    <% end %>
+  </div>
+  <%= link_to "See all posts", user_posts_path(@user.id), class: 'detail-item' %>
+</div>

@@ -1,1 +1,12 @@
-<h1>Home Page</h1>
+<h1>Home Page - List of users</h1>
+
+<table>
+  <% @users.each do |user| %>
+    <tr>
+    <td><%= image_tag(user.photo) %></td>
+    <td><%= user.name %></td>
+    <td><span>Number of Posts: </span><%= user.posts_counter %></td>
+    <td><%= link_to 'User', user_path(user.id) %></td>
+    </tr>
+  <% end %>
+</table>
