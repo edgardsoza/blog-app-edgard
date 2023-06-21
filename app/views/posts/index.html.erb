@@ -15,7 +15,7 @@
       <span class='details-post-comments'>Comments : <%= post.comments_counter %></span>
     </div>
     <ul>
-      <% post.return_recent_comments.each do |comment| %>
+      <% post.recent_comments.each do |comment| %>
       <li> <%= comment.text %></li>
       <% end %> 
     </ul>
