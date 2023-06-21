@@ -1,1 +1,16 @@
 <h1>Post Details</h1>
+
+<div class='details-post'>
+<div class='post-description'> 
+<h2><%= @post.title%> by <%= @post.author.name %></h2>
+<p class="post-head-counter">
+    Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %>
+</p>
+</div>
+<p><%= @post.text%></p>
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li><%= comment.user.name %> <b>:</b> <%= comment.text %></li>
+  <% end %>
+</ul>
+</div>

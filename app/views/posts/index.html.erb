@@ -1,1 +1,25 @@
 <h1>List of Posts</h1>
+<div class='details-user-post'>
+  <div class='details-user-header'>
+    <img id='details-user-image' src="<%= @user.photo %>" alt="User Photo">
+    <span class='details-user-name'><%= @user.name %></span>
+    <span class='details-user-posts'>Number of Posts: <%= @user.posts_counter %></span>
+  </div>
+  <% @posts.each_with_index do |post, index| %>
+    <div class='details-post-bio'>
+    <p>Post #<%= index+1 %></p>
+    <p><%= post.title %></p>
+    <p><%= post.text %></p>
+    <div class='details-post-interactions'>
+      <span class='details-post-likes'>Likes : <%= post.likes_counter %></span>
+      <span class='details-post-comments'>Comments : <%= post.comments_counter %></span>
+    </div>
+    <ul>
+      <% post.recent_comments.each do |comment| %>
+      <li> <%= comment.text %></li>
+      <% end %> 
+    </ul>
+    </div>
+    <a href="/users/<%= @user.id %>/posts/<%= post.id %>"> See more</a>
+    <% end %>
+</div>
