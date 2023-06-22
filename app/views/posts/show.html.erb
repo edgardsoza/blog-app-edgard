@@ -13,4 +13,12 @@
     <li><%= comment.user.name %> <b>:</b> <%= comment.text %></li>
   <% end %>
 </ul>
+<div > 
+<%= form_with url: "/users/#{@post.author_id}/posts/#{@post.id}/likes" do |f| %>
+<%= f.submit "Like" %>
+<% end %>
 </div>
+</div>
+
+<%= link_to 'Add comment', new_user_post_comment_path(@user, @post) %> <br>
+<%= link_to 'Go back', user_posts_path(@user) %>
