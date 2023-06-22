@@ -1,11 +1,17 @@
 class CommentsController < ApplicationController
+    before_action :set_user, only: [:create]
+    before_action :set_post, only: [:new, :create]
+  
+    def new
+      @comment = Comment.new
+    end
+  
     def create
-      @post = Post.find(params[:post_id])
-      @comment = @post.comments.build(comment_params)
+      @comment = @post.comments.new(comment_params)
       @comment.user = current_user
   
       if @comment.save
-        redirect_to @post, notice: 'Comment created successfully.'
+        redirect_to user_post_url(@post.author, @post), notice: 'Comment created successfully.'
       else
         render :new
       end
@@ -14,7 +20,16 @@ class CommentsController < ApplicationController
     private
   
     def comment_params
-      params.require(:comment).permit(:content)
+      params.require(:comment).permit(:text)
+    end
+  
+    def set_post
+      @post = Post.find(params[:post_id])
+      @user = @post.author
+    end
+
+    def set_user
+      @user = current_user
     end
   end
   

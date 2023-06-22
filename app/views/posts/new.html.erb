@@ -1,12 +1,12 @@
 <!-- posts/new.html.erb -->
-<h1>New Post</h1>
+<h1>Create New Post</h1>
 
-<%= form_with(model: @post, url: posts_path, method: :post) do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title %>
+<%= form_with(model: @post, url: user_posts_path, method: :post) do |form| %>
+  <%= form.label :title, 'Enter title post' %> <br>
+  <%= form.text_field :title %> <br>
 
-  <%= form.label :content %>
-  <%= form.text_area :content %>
+  <%= form.label :text, 'Enter content of the post' %> <br>
+  <%= form.text_area :text %> <br>
 
   <%= form.submit 'Create Post' %>
 <% end %>
