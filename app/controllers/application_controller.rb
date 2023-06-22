@@ -5,7 +5,5 @@ class ApplicationController < ActionController::Base
     @current_user = User.first
   end
 
-  def current_user
-    @current_user
-  end
+  attr_reader :current_user
 end
