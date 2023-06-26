@@ -66,5 +66,5 @@ RSpec.describe 'Posts', type: :feature do
     it 'renders pagination section if posts are more than 3' do
       expect(page).to have_content('See more')
     end
-end
+  end
 end

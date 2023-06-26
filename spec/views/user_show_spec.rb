@@ -31,9 +31,9 @@ RSpec.describe 'Posts', type: :feature do
     end
 
     it 'renders 3 recent posts of the user' do
-        expect(page).to have_content('Post #1')
-        expect(page).to have_content('Post #2')
-        expect(page).to have_content('Post #3')
+      expect(page).to have_content('Post #1')
+      expect(page).to have_content('Post #2')
+      expect(page).to have_content('Post #3')
     end
 
     it 'renders a button to redirect to posts page' do
