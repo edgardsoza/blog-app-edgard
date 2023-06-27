@@ -66,5 +66,14 @@ RSpec.describe 'Posts', type: :feature do
     it 'renders pagination section if posts are more than 3' do
       expect(page).to have_content('See more')
     end
+
+    it 'should redirect to the post show page' do
+      visit user_posts_path(user_id: @user.id)
+      [@post1, @post2].each do |post|
+        click_link 'See more', href: user_post_path(user_id: @user.id, id: post.id)
+        expect(page).to have_current_path(user_post_path(user_id: @user.id, id: post.id))
+        visit user_posts_path(user_id: @user.id)
+      end
+    end
   end
 end
