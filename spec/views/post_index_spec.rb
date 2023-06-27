@@ -34,7 +34,7 @@ RSpec.describe 'Posts', type: :feature do
       expect(page).to have_content(@user.posts_counter)
     end
 
-    it "renders the user's posts" do
+    it "renders the user's posts title" do
       expect(page).to have_content('First Post')
       expect(page).to have_content('Second Post')
       expect(page).to have_content('Third Post')
