@@ -106,6 +106,11 @@ irb> load 'main'.rb
 - [GitHub](https://github.com/edgardsoza)
 - [LinkedIn](https://www.linkedin.com/in/edgard-soza-sobalvarro/)
 
+👤 **Ayomipo Majek**
+
+- GitHub: [@AyomipoMajek](https://github.com/AyomipoMajek)
+- Linkedin: [@AyomipoMajek](https://www.linkedin.com/in/ayomipomajek/)
+
 <p align="right"><a href="#readme-top">👆</a></p>
 
 <!-- FUTURE FEATURES -->
