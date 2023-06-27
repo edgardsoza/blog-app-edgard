@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_user
+  before_action :authenticate_user!
+  
+  protected
 
-  def set_current_user
-    @current_user = User.first
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :photo, :bio, :posts_counter) }
   end
-
-  attr_reader :current_user
 end
