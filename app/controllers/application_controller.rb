@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_user
+  before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
 
-  def set_current_user
-    @current_user = User.first
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :photo, :bio, :posts_counter) }
   end
 
-  attr_reader :current_user
+  def after_sign_in_path_for(_resource)
+    puts "Redirecting user to: #{users_path}"
+    users_path
+  end
 end

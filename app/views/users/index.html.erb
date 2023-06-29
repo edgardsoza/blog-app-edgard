@@ -1,9 +1,13 @@
+<%= button_to "Sign Out", destroy_user_session_path, method: :delete, form_class: "sign-out-form", onclick: "window.location.href='/users/sign_in'" %>
+<%= link_to "Sign In", new_user_session_path %></br>
+<%= link_to "Sign Up", new_user_registration_path %>
+
 <h1>Home Page - List of users</h1>
 
 <table>
   <% @users.each do |user| %>
     <tr>
-    <td><%= image_tag(image_url(user.photo)) %></td>
+    <td><%= image_tag(user.photo.present? ? user.photo.url : 'default_photo.jpg') %></td>
     <td><%= user.name %></td>
     <td><span>Number of Posts: </span><%= user.posts_counter %></td>
     <td><%= link_to 'User', user_path(user.id) %></td>
