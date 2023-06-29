@@ -15,15 +15,15 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    
+
     if can? :destroy, @post
       user = @post.author
       user.decrement!(:posts_counter)
       @post.likes.destroy_all
       @post.destroy
-      redirect_to user_posts_path(current_user), notice: "Post deleted successfully."
+      redirect_to user_posts_path(current_user), notice: 'Post deleted successfully.'
     else
-      redirect_to user_post_path(@post.author_id, @post), alert: "You are not authorized to delete this post."
+      redirect_to user_post_path(@post.author_id, @post), alert: 'You are not authorized to delete this post.'
     end
   end
 

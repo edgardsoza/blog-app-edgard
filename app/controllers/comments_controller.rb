@@ -28,13 +28,13 @@ class CommentsController < ApplicationController
       @comment.destroy
       post.comments.delete(@comment) # Remove the comment from the comments collection
       post.decrement!(:comments_counter) # Decrement the comments counter
-  
+
       redirect_to user_post_path(post.author, post), notice: 'Comment deleted successfully.'
     else
-      redirect_to user_post_path(@comment.post.user, @comment.post), alert: 'You are not authorized to delete this comment.'
+      redirect_to user_post_path(@comment.post.user, @comment.post),
+                  alert: 'You are not authorized to delete this comment.'
     end
   end
-  
 
   private
 
