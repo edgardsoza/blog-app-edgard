@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :photo, :bio, :posts_counter) }
   end
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     puts "Redirecting user to: #{users_path}"
     users_path
   end
