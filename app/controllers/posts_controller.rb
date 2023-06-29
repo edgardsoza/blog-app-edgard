@@ -17,6 +17,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     
     if can? :destroy, @post
+      user = @post.author
+      user.decrement!(:posts_counter)
+      @post.likes.destroy_all
       @post.destroy
       redirect_to user_posts_path(current_user), notice: "Post deleted successfully."
     else
