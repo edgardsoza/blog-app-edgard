@@ -1,16 +1,22 @@
 <h1>Post Details</h1>
 
 <div class='details-post'>
-<div class='post-description'> 
+<div class='post-description'>
 <h2><%= @post.title%> by <%= @post.author.name %></h2>
 <p class="post-head-counter">
     Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %>
 </p>
 </div>
-<p><%= @post.text%></p>
+<p>‹%= @post.text%></p>
+<% if can? :destroy, @post %›
+    ‹% button_to 'Delete', user _post_path(@user, @post), method: :delete %›
+<% end %>
 <ul>
   <% @post.comments.each do |comment| %>
     <li><%= comment.user.name %> <b>:</b> <%= comment.text %></li>
+    <% if can? :destroy, comment %>
+        <%= button_to 'Delete', user_post_comment_path(@user, @post, comment), method: :delete %>
+    <% end %>
   <% end %>
 </ul>
 <div > 
